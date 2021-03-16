@@ -1,4 +1,5 @@
-import { HomeContent, homeQuery } from './queries/home-gql'
+import { homeQuery } from './queries/home/gql'
+import { HomeContent } from './queries/home/types'
 import {
   ApolloClient,
   InMemoryCache,

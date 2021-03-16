@@ -1,5 +1,3 @@
-import { gql } from '@apollo/client'
-
 export interface HomeProps {
   homeContent: HomeContent
 }
@@ -39,22 +37,3 @@ export interface Photo {
 export enum Typename {
   FileField = 'FileField',
 }
-
-export const homeQuery = gql`
-  query HomeQuery {
-    home {
-      title
-      description
-      projects {
-        id
-        uid
-        title
-        photos {
-          url(imgixParams: { w: "840", fit: fill })
-          width
-          height
-        }
-      }
-    }
-  }
-`

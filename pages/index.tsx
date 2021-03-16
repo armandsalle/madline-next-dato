@@ -1,5 +1,5 @@
 import type { GetStaticProps } from 'next'
-import type { HomeProps } from '../lib/queries/home-gql'
+import type { HomeProps } from '../lib/queries/home/types'
 
 import Head from 'next/head'
 import Link from 'next/link'
