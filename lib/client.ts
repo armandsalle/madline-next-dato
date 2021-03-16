@@ -1,11 +1,8 @@
-import { homeQuery } from './queries/home/gql'
-import { HomeContent } from './queries/home/types'
-import {
-  ApolloClient,
-  InMemoryCache,
-  NormalizedCacheObject,
-  ApolloQueryResult,
-} from '@apollo/client'
+import type { HomeContent } from '@/queries/home/types'
+import type { NormalizedCacheObject, ApolloQueryResult } from '@apollo/client'
+
+import { homeQuery } from '@/queries/home/gql'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 export class Client {
   uri: string

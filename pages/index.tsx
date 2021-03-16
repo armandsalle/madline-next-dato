@@ -1,10 +1,10 @@
 import type { GetStaticProps } from 'next'
-import type { HomeProps } from '../lib/queries/home/types'
+import type { HomeProps } from '@/queries/home/types'
 
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { client } from '../lib/client'
+import { client } from '@/lib/client'
 
 function Home({ homeContent }: HomeProps): JSX.Element {
   return (
