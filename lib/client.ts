@@ -1,9 +1,38 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { HomeContent, homeQuery } from './queries/home-gql'
+import {
+  ApolloClient,
+  InMemoryCache,
+  NormalizedCacheObject,
+  ApolloQueryResult,
+} from '@apollo/client'
 
-export const client = new ApolloClient({
-  uri: `https://graphql.datocms.com/`,
-  headers: {
-    authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
-  },
-  cache: new InMemoryCache(),
-})
+export class Client {
+  uri: string
+  token: string
+  client: ApolloClient<NormalizedCacheObject>
+
+  constructor() {
+    this.uri = `https://graphql.datocms.com/`
+    this.token = process.env.NEXT_DATOCMS_API_TOKEN
+
+    this.client = new ApolloClient({
+      uri: this.uri,
+      headers: {
+        authorization: `Bearer ${this.token}`,
+      },
+      cache: new InMemoryCache(),
+    })
+  }
+
+  getHome = async (): Promise<ApolloQueryResult<HomeContent>> => {
+    const {
+      data: { home },
+    } = await this.client.query({
+      query: homeQuery,
+    })
+
+    return home
+  }
+}
+
+export const client = new Client()
