@@ -7,8 +7,6 @@ import Image from 'next/image'
 import { client } from '../lib/client'
 
 function Home({ homeContent }: HomeProps): JSX.Element {
-  const p = 'heelo'
-
   return (
     <div>
       <Head>
