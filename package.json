@@ -3,6 +3,7 @@
   "author": "@armandsalle",
   "license": "MIT",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,19 +11,7 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn format"
-    }
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format"
-    ]
+    "postinstall": "husky install"
   },
   "dependencies": {
     "next": "latest",
