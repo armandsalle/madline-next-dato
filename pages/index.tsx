@@ -3,8 +3,8 @@ import type { HomeProps } from '@/queries/home/types'
 
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
 import { client } from '@/lib/client'
+import { Image } from 'react-datocms'
 
 function Home({ homeContent, layoutContent }: HomeProps): JSX.Element {
   return (
@@ -13,21 +13,28 @@ function Home({ homeContent, layoutContent }: HomeProps): JSX.Element {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img src={layoutContent.siteLogo.url} />
+      <img src={layoutContent.siteLogo.url} alt="logo" title="logo" />
       <h1>{homeContent.title}</h1>
       <p>{homeContent.description}</p>
       {homeContent.projects.map((e) => (
         <Link href={`/gallery/${e.uid}`} key={e.id}>
-          <a>
-            <div style={{ position: 'relative', width: 420 }}>
-              <Image
-                src={e.photos[0].url}
-                alt={`${homeContent.title} thumbnail`}
-                layout="responsive"
-                width={e.photos[0].width}
-                height={e.photos[0].height}
-              />
-            </div>
+          <a style={{ width: '90%', margin: '0 auto', display: 'block' }}>
+            <Image
+              data={e.photos[0].responsiveImage}
+              explicitWidth={true}
+              lazyLoad={false}
+              style={{
+                width: 420,
+                border: 'none',
+                overflow: 'hidden',
+                display: 'block',
+              }}
+              pictureStyle={{
+                border: 'none',
+                width: 420,
+                overflow: 'hidden',
+              }}
+            />
             <p>{e.title}</p>
           </a>
         </Link>

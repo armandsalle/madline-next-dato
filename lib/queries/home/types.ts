@@ -31,12 +31,22 @@ export interface Project {
 }
 
 export interface Photo {
-  __typename: Typename
-  url: string
-  width: number
-  height: number
+  responsiveImage: ResponsiveImage
 }
 
-export enum Typename {
-  FileField = 'FileField',
+export interface ResponsiveImage {
+  srcSet: string
+  webpSrcSet: string
+  sizes: Sizes
+  src: string
+  width: number
+  height: number
+  aspectRatio: number
+  alt: null
+  title: null
+  base64: string
+}
+
+export enum Sizes {
+  MaxWidth840Px100Vw840Px = '(max-width: 840px) 100vw, 840px',
 }
