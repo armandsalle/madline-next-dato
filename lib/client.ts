@@ -1,5 +1,6 @@
 import type { HomeContent } from '@/queries/home/types'
-import type { NormalizedCacheObject, ApolloQueryResult } from '@apollo/client'
+import type { LayoutContent } from '@/queries/layout/types'
+import type { NormalizedCacheObject } from '@apollo/client'
 
 import { homeQuery } from '@/queries/home/gql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
@@ -22,14 +23,15 @@ export class Client {
     })
   }
 
-  getHome = async (): Promise<ApolloQueryResult<HomeContent>> => {
-    const {
-      data: { home },
-    } = await this.client.query({
+  getHome = async (): Promise<{ home: HomeContent; layout: LayoutContent }> => {
+    const { data } = await this.client.query({
       query: homeQuery,
     })
 
-    return home
+    const home: HomeContent = data.home
+    const layout: LayoutContent = data.layout
+
+    return { home, layout }
   }
 }
 

@@ -6,13 +6,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { client } from '@/lib/client'
 
-function Home({ homeContent }: HomeProps): JSX.Element {
+function Home({ homeContent, layoutContent }: HomeProps): JSX.Element {
   return (
     <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <img src={layoutContent.siteLogo.url} />
       <h1>{homeContent.title}</h1>
       <p>{homeContent.description}</p>
       {homeContent.projects.map((e) => (
@@ -36,11 +37,12 @@ function Home({ homeContent }: HomeProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const home = await client.getHome()
+  const { home, layout } = await client.getHome()
 
   return {
     props: {
       homeContent: home,
+      layoutContent: layout,
     },
   }
 }

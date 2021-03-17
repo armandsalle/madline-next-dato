@@ -1,7 +1,12 @@
 import { gql } from '@apollo/client'
+import { layoutQuery } from '@/queries/layout/gql'
 
 export const homeQuery = gql`
+  ${layoutQuery}
   query HomeQuery {
+    layout {
+      ...Layout
+    }
     home {
       title
       description
@@ -10,7 +15,7 @@ export const homeQuery = gql`
         uid
         title
         photos {
-          url(imgixParams: { w: "840", fit: fill })
+          url(imgixParams: { w: "700", fit: fill })
           width
           height
         }

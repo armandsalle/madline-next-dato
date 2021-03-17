@@ -1,5 +1,8 @@
+import type { LayoutContent } from '../layout/types'
+
 export interface HomeProps {
   homeContent: HomeContent
+  layoutContent: LayoutContent
 }
 
 export interface HomeQuery {
