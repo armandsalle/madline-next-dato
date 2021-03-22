@@ -1,19 +1,13 @@
 import type { GetStaticProps } from 'next'
 import type { HomeProps } from '@/queries/home/types'
 
-import Head from 'next/head'
 import Link from 'next/link'
 import { client } from '@/lib/client'
 import { Image } from 'react-datocms'
 
-function Home({ homeContent, layoutContent }: HomeProps): JSX.Element {
+function Home({ homeContent }: HomeProps): JSX.Element {
   return (
     <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <img src={layoutContent.siteLogo.url} alt="logo" title="logo" />
       <h1>{homeContent.title}</h1>
       <p>{homeContent.description}</p>
       {homeContent.projects.map((e) => (
@@ -44,12 +38,14 @@ function Home({ homeContent, layoutContent }: HomeProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { home, layout } = await client.getHome()
+  const { home } = await client.getHome()
+  const { layout, site } = await client.getLayout()
 
   return {
     props: {
       homeContent: home,
       layoutContent: layout,
+      siteContent: site,
     },
   }
 }

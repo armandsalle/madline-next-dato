@@ -1,8 +1,9 @@
-import type { LayoutContent } from '../layout/types'
+import type { LayoutContent, SiteContent } from '../layout/types'
 
 export interface HomeProps {
   homeContent: HomeContent
-  layoutContent: LayoutContent
+  LayoutContent: LayoutContent
+  SiteContent: SiteContent
 }
 
 export interface HomeQuery {

@@ -1,9 +1,13 @@
 import type { HomeContent } from '@/queries/home/types'
-import type { LayoutContent } from '@/queries/layout/types'
+import type { LayoutContent, SiteContent } from '@/queries/layout/types'
+import type { AboutContent } from '@/queries/about/types'
 import type { NormalizedCacheObject } from '@apollo/client'
 
 import { homeQuery } from '@/queries/home/gql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { layoutQuery } from './queries/layout/gql'
+import { aboutQuery } from './queries/about/gql'
+import { projectsSlugQuery } from './queries/projects/gql'
 
 export class Client {
   uri: string
@@ -23,15 +27,44 @@ export class Client {
     })
   }
 
-  getHome = async (): Promise<{ home: HomeContent; layout: LayoutContent }> => {
+  getLayout = async (): Promise<{ layout: LayoutContent; site: SiteContent }> => {
+    const { data } = await this.client.query({
+      query: layoutQuery,
+    })
+
+    const site: SiteContent = data._site
+    const layout: LayoutContent = data.layout
+
+    return { site, layout }
+  }
+
+  getHome = async (): Promise<{ home: HomeContent }> => {
     const { data } = await this.client.query({
       query: homeQuery,
     })
 
     const home: HomeContent = data.home
-    const layout: LayoutContent = data.layout
 
-    return { home, layout }
+    return { home }
+  }
+
+  getAbout = async (): Promise<{ about: AboutContent }> => {
+    const { data } = await this.client.query({
+      query: aboutQuery,
+    })
+
+    const about: AboutContent = data.about
+
+    return { about }
+  }
+  getAllProjectsWithSlug = async (): Promise<{ uids: string[] }> => {
+    const { data } = await this.client.query({
+      query: projectsSlugQuery,
+    })
+
+    const uids = data.allProjects.map((post) => `/gallery/${post.uid}`)
+
+    return { uids }
   }
 }
 

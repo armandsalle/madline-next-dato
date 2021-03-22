@@ -3,35 +3,57 @@ export interface Layout {
 }
 
 export interface LayoutData {
+  _site: SiteContent
   layout: LayoutContent
 }
 
+export interface SiteContent {
+  faviconMetaTags: FaviconMetaTag[]
+}
+
+export interface Favicon {
+  url: string
+}
+
 export interface LayoutContent {
-  phone: string
-  pinterest: string
-  siteTitle: string
-  siteLogo: SiteLogo
-  _seoMetaTags: SEOMetaTag[]
   instagram: string
   mail: string
   facebook: string
-}
-
-export interface SEOMetaTag {
-  attributes: Attributes | null
-  content: null | string
-  tag: Tag
-}
-
-export interface Attributes {
-  property?: string
-  content: string
-  name?: string
+  phone: string
+  pinterest: string
+  siteTitle: string
+  siteLogo: Favicon
+  _seoMetaTags: SEOMetaTag[]
 }
 
 export enum Tag {
   Meta = 'meta',
   Title = 'title',
+}
+
+export interface FaviconMetaTag {
+  content: null
+  attributes: FaviconMetaTagAttributes
+  tag: string
+}
+
+export interface FaviconMetaTagAttributes {
+  sizes: string
+  type: string
+  rel: string
+  href: string
+}
+
+export interface SEOMetaTag {
+  attributes: SEOMetaTagAttributes | null
+  content: null | string
+  tag: Tag
+}
+
+export interface SEOMetaTagAttributes {
+  property?: string
+  content: string
+  name?: string
 }
 
 export interface SiteLogo {
