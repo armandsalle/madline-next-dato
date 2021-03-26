@@ -17,7 +17,6 @@ export class Client {
   constructor() {
     this.uri = `https://graphql.datocms.com/`
     this.token = process.env.NEXT_DATOCMS_API_TOKEN
-
     this.client = new ApolloClient({
       uri: this.uri,
       headers: {
@@ -57,6 +56,7 @@ export class Client {
 
     return { about }
   }
+
   getAllProjectsWithSlug = async (): Promise<{ uids: string[] }> => {
     const { data } = await this.client.query({
       query: projectsSlugQuery,

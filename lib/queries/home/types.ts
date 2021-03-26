@@ -43,9 +43,9 @@ export interface ResponsiveImage {
   width: number
   height: number
   aspectRatio: number
-  alt: null
-  title: null
-  base64: string
+  alt: string
+  title: string
+  bgColor: string
 }
 
 export enum Sizes {

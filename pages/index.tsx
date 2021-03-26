@@ -1,38 +1,21 @@
 import type { GetStaticProps } from 'next'
 import type { HomeProps } from '@/queries/home/types'
-
 import Link from 'next/link'
 import { client } from '@/lib/client'
-import { Image } from 'react-datocms'
+import ProjectsList from '@/components/project/projectsList'
 
 function Home({ homeContent }: HomeProps): JSX.Element {
   return (
     <div>
       <h1>{homeContent.title}</h1>
+
+      <ProjectsList projects={homeContent.projects} />
+
       <p>{homeContent.description}</p>
-      {homeContent.projects.map((e) => (
-        <Link href={`/gallery/${e.uid}`} key={e.id}>
-          <a style={{ width: '90%', margin: '0 auto', display: 'block' }}>
-            <Image
-              data={e.photos[0].responsiveImage}
-              explicitWidth={true}
-              lazyLoad={false}
-              style={{
-                width: 420,
-                border: 'none',
-                overflow: 'hidden',
-                display: 'block',
-              }}
-              pictureStyle={{
-                border: 'none',
-                width: 420,
-                overflow: 'hidden',
-              }}
-            />
-            <p>{e.title}</p>
-          </a>
-        </Link>
-      ))}
+
+      <Link href="/contact" passHref>
+        <a href="contact">Contactez moi</a>
+      </Link>
     </div>
   )
 }

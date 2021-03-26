@@ -17,10 +17,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Head>
         {!SEO &&
+          layoutContent &&
           renderMetaTags((layoutContent._seoMetaTags as any[]).concat(siteContent.faviconMetaTags))}
         {SEO && renderMetaTags((SEO as any[]).concat(siteContent.faviconMetaTags))}
       </Head>
-      <img src={layoutContent.siteLogo.url} alt="logo" title="logo" />
+      {layoutContent && <img src={layoutContent.siteLogo.url} alt="logo" title="logo" />}
       <Link href="/">
         <a>Portfolio</a>
       </Link>
@@ -30,10 +31,12 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
       <Component {...pageProps} />
 
-      <footer>
-        <p>{layoutContent.mail}</p>
-        <p>{layoutContent.phone}</p>
-      </footer>
+      {layoutContent && (
+        <footer>
+          <p>{layoutContent.mail}</p>
+          <p>{layoutContent.phone}</p>
+        </footer>
+      )}
     </>
   )
 }

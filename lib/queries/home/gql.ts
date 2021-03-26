@@ -23,7 +23,7 @@ export const homeQuery = gql`
             aspectRatio
             alt
             title
-            base64
+            bgColor
           }
         }
       }

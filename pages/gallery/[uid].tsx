@@ -16,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: uids || [],
-    fallback: true,
+    fallback: false,
   }
 }
 
