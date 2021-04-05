@@ -2,9 +2,7 @@ import type { AppProps } from 'next/app'
 import type { LayoutContent, SiteContent } from '@/queries/layout/types'
 
 import '@/styles/globals.scss'
-import Head from 'next/head'
-import Link from 'next/link'
-import { renderMetaTags } from 'react-datocms'
+import Layout from '@/components/hoc/layout'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const {
@@ -14,30 +12,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }: { layoutContent: LayoutContent; siteContent: SiteContent; SEO } = pageProps
 
   return (
-    <>
-      <Head>
-        {!SEO &&
-          layoutContent &&
-          renderMetaTags((layoutContent._seoMetaTags as any[]).concat(siteContent.faviconMetaTags))}
-        {SEO && renderMetaTags((SEO as any[]).concat(siteContent.faviconMetaTags))}
-      </Head>
-      {layoutContent && <img src={layoutContent.siteLogo.url} alt="logo" title="logo" />}
-      <Link href="/">
-        <a>Portfolio</a>
-      </Link>
-      <Link href="/about">
-        <a>A propos</a>
-      </Link>
-
+    <Layout layoutContent={layoutContent} siteContent={siteContent} SEO={SEO}>
       <Component {...pageProps} />
-
-      {layoutContent && (
-        <footer>
-          <p>{layoutContent.mail}</p>
-          <p>{layoutContent.phone}</p>
-        </footer>
-      )}
-    </>
+    </Layout>
   )
 }
 

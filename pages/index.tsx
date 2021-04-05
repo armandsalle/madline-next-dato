@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next'
 import type { HomeProps } from '@/queries/home/types'
 import Link from 'next/link'
 import { client } from '@/lib/client'
-import ProjectsList from '@/components/project/projectsList'
+import ProjectsList from '@/components/ui/project/projectsList'
 
 function Home({ homeContent }: HomeProps): JSX.Element {
   return (
