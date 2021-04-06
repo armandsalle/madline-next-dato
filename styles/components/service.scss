@@ -1,0 +1,65 @@
+.service {
+  margin-bottom: 13rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include media('<tablet') {
+    margin-bottom: 9rem;
+  }
+
+  @include media('<lanscape') {
+    margin-bottom: 5rem;
+  }
+
+  &_img {
+    width: 100%;
+    height: 0;
+    padding-top: 46%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 6.5rem;
+
+    @include media('<tablet') {
+      margin-bottom: 4.5rem;
+    }
+
+    @include media('<lanscape') {
+      margin-bottom: 3rem;
+    }
+
+    &_wrapper {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &_title {
+    & h2 {
+      font-size: clamp(2.8rem, 2.77vw, 4rem);
+      font-weight: 400;
+    }
+
+    & h3 {
+      font-size: clamp(1.2rem, 0.97vw, 1.4rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      opacity: .5;
+      margin-top: .5rem;
+    }
+  }
+
+  &_content {
+    font-size: clamp(1.6rem, 1.25vw, 1.8rem);
+    line-height: 1.3;
+    letter-spacing: 0.6px;
+
+    & p {
+      margin-bottom: 1rem;
+    }
+  }
+}

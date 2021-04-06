@@ -16,7 +16,7 @@ export const contactQuery = gql`
           aspectRatio
           alt
           title
-          base64
+          bgColor
         }
       }
       _seoMetaTags {

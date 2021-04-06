@@ -2,15 +2,17 @@ import type { HomeContent } from '@/queries/home/types'
 import type { LayoutContent, SiteContent } from '@/queries/layout/types'
 import type { AboutContent } from '@/queries/about/types'
 import type { NormalizedCacheObject } from '@apollo/client'
+import type { ProjectItem } from './queries/projects/types'
+import type { ContactContent } from './queries/contact/types'
+import type { Prestation } from './queries/services/types'
 
 import { homeQuery } from '@/queries/home/gql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { layoutQuery } from './queries/layout/gql'
 import { aboutQuery } from './queries/about/gql'
 import { projectQuery, projectsSlugQuery } from './queries/projects/gql'
-import { ProjectItem } from './queries/projects/types'
 import { contactQuery } from './queries/contact/gql'
-import { ContactContent } from './queries/contact/types'
+import { servicesQuery } from './queries/services/gql'
 
 export class Client {
   uri: string
@@ -89,6 +91,16 @@ export class Client {
     const contact: ContactContent = data.contact
 
     return contact
+  }
+
+  getServices = async (): Promise<Prestation> => {
+    const { data } = await this.client.query({
+      query: servicesQuery,
+    })
+
+    const prestation: Prestation = data.prestation
+
+    return prestation
   }
 }
 

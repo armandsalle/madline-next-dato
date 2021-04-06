@@ -7,11 +7,6 @@
     margin-bottom: 1rem;
   }
 
-  & strong,
-  & strong * {
-    font-weight: 700;
-  }
-
   & h2,
   h3 {
     font-size: clamp(2.8rem, 2.77vw, 4rem);

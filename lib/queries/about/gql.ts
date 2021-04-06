@@ -18,7 +18,7 @@ export const aboutQuery = gql`
           aspectRatio
           alt
           title
-          base64
+          bgColor
         }
       }
       _seoMetaTags {
