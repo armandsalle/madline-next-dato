@@ -1,24 +1,24 @@
+import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
+import cn from 'classnames'
 
-interface NavProps {
-  logoUrl: string
-}
+const Nav = (): JSX.Element => {
+  const router = useRouter()
 
-const Nav = ({ logoUrl }: NavProps): JSX.Element => {
   return (
     <nav className="nav">
-      <Link href="/">
-        <a>
-          <img src={logoUrl} alt="logo" title="logo" />
-        </a>
-      </Link>
-
-      <Link href="/">
-        <a>Portfolio</a>
-      </Link>
-      <Link href="/about">
-        <a>A propos</a>
-      </Link>
+      {[
+        { href: '/', title: 'Portfolio' },
+        { href: '/about', title: 'À propos' },
+        { href: '/services', title: 'Services' },
+        { href: '/contact', title: 'Contact' },
+      ].map((l, i) => (
+        <div key={i} className={cn('nav-link', router.pathname === l.href && 'active')}>
+          <Link href={l.href}>
+            <a>{l.title}</a>
+          </Link>
+        </div>
+      ))}
     </nav>
   )
 }

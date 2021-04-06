@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+
+    &-link {
+        text-align: end;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+
+        & a {
+            letter-spacing: .42px;
+        }
+
+        &.active {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+ul,
+li {
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.title {
+    margin-bottom: 17rem;
+    max-width: 51rem;
+    width: 100%;
+
+    .h1 {
+        font-size: 4.5rem;
+
+        @include media("<tablet") {
+            font-size: 3.5rem;
+        }
+
+        @include media("<lanscape") {
+            font-size: 3rem;
+        }
+
+        @include media("<phone") {
+            font-size: 2.2rem;
+        }
+    }
+
+    @include media("<tablet") {
+        margin-bottom: 11rem;
+    }
+
+    @include media("<lanscape") {
+        max-width: 36rem;
+        margin-bottom: 9rem;
+    }
+
+    @include media("<phone") {
+        max-width: 27rem;
+        margin-bottom: 6rem;
+    }
+
+}

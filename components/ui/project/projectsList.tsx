@@ -1,15 +1,33 @@
+import type { Project } from '@/lib/queries/home/types'
+
 import ProjectThumb from './projectThumb'
 import cloneDeep from 'lodash.clonedeep'
+import Masonry from 'react-masonry-css'
 
-const ProjectsList = ({ projects }): JSX.Element => {
-  return projects.map((readOnlyProject, index) => {
-    const project = cloneDeep(readOnlyProject)
+interface ProjectsProps {
+  projects: Project[]
+}
 
-    return (
-      // <h2 key={index}>{project.title}</h2>
-      <ProjectThumb project={project} key={index} />
-    )
-  })
+const ProjectsList = ({ projects }: ProjectsProps): JSX.Element => {
+  const breakpointColumnsObj = {
+    default: 3,
+    767: 2,
+    478: 1,
+  }
+
+  return (
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className="home-projects-grid"
+      columnClassName="home-project"
+    >
+      {projects.map((readOnlyProject, index) => {
+        const project = cloneDeep(readOnlyProject)
+
+        return <ProjectThumb project={project} key={index} />
+      })}
+    </Masonry>
+  )
 }
 
 export default ProjectsList

@@ -1,22 +1,18 @@
 import type { GetStaticProps } from 'next'
 import type { HomeProps } from '@/queries/home/types'
-import Link from 'next/link'
-import { client } from '@/lib/client'
+
 import ProjectsList from '@/components/ui/project/projectsList'
+import Quote from '@/components/ui/quote'
+import Title from '@/components/ui/title'
+import { client } from '@/lib/client'
 
 function Home({ homeContent }: HomeProps): JSX.Element {
   return (
-    <div>
-      <h1>{homeContent.title}</h1>
-
+    <>
+      <Title text={homeContent.title} />
       <ProjectsList projects={homeContent.projects} />
-
-      <p>{homeContent.description}</p>
-
-      <Link href="/contact" passHref>
-        <a href="contact">Contactez moi</a>
-      </Link>
-    </div>
+      <Quote content={homeContent.description} />
+    </>
   )
 }
 

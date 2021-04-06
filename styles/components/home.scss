@@ -1,0 +1,42 @@
+.home-projects-grid {
+    display: flex;
+    margin-left: -2.77vw;
+    width: auto;
+
+    @include media(">desktop") {
+        margin-left: -40px
+    }
+}
+
+.home-project {
+    padding-left: 2.77vw;
+    background-clip: padding-box;
+
+    @include media(">desktop") {
+        padding-left: 40px
+    }
+
+    &_title {
+        margin-top: 1rem;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        font-size: clamp(1.2rem, 0.97vw, 1.4rem);
+    }
+}
+
+.home-project article {
+    margin-bottom: 40px;
+
+    @include media("<desktop") {
+        margin-bottom: 2.77vw;
+    }
+
+    @include media("<tablet") {
+        margin-bottom: 3.77vw;
+    }
+
+    @include media("<phone") {
+        margin-bottom: 5vw;
+    }
+}
