@@ -1,13 +1,18 @@
+import type { ProjectItem } from '@/lib/queries/projects/types'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
+import Title from '@/components/ui/title'
+import Quote from '@/components/ui/quote'
 import { client } from '@/lib/client'
-// import { Image } from 'react-datocms'
+import ProjectsList from '@/components/ui/project/projectsList'
 
-function Project(): JSX.Element {
+function Project({ project }: { project: ProjectItem }): JSX.Element {
   return (
-    <div>
-      <h1>Project</h1>
-    </div>
+    <>
+      <Title text={project.title} />
+      <ProjectsList photos={project.photos} title={project.title} />
+      <Quote content={project.description} />
+    </>
   )
 }
 
@@ -20,13 +25,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const uid = context.params.uid as string
+
   const { layout, site } = await client.getLayout()
+  const project = await client.getProject(uid)
 
   return {
     props: {
       layoutContent: layout,
       siteContent: site,
+      project,
     },
   }
 }

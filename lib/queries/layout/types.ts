@@ -1,3 +1,5 @@
+import { SEOMetaTag } from '@/lib/shared/types/seo'
+
 export interface Layout {
   data: LayoutData
 }
@@ -26,11 +28,6 @@ export interface LayoutContent {
   _seoMetaTags: SEOMetaTag[]
 }
 
-export enum Tag {
-  Meta = 'meta',
-  Title = 'title',
-}
-
 export interface FaviconMetaTag {
   content: null
   attributes: FaviconMetaTagAttributes
@@ -42,18 +39,6 @@ export interface FaviconMetaTagAttributes {
   type: string
   rel: string
   href: string
-}
-
-export interface SEOMetaTag {
-  attributes: SEOMetaTagAttributes | null
-  content: null | string
-  tag: Tag
-}
-
-export interface SEOMetaTagAttributes {
-  property?: string
-  content: string
-  name?: string
 }
 
 export interface SiteLogo {

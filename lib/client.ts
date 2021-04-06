@@ -7,7 +7,8 @@ import { homeQuery } from '@/queries/home/gql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { layoutQuery } from './queries/layout/gql'
 import { aboutQuery } from './queries/about/gql'
-import { projectsSlugQuery } from './queries/projects/gql'
+import { projectQuery, projectsSlugQuery } from './queries/projects/gql'
+import { ProjectItem } from './queries/projects/types'
 
 export class Client {
   uri: string
@@ -65,6 +66,17 @@ export class Client {
     const uids = data.allProjects.map((post) => `/gallery/${post.uid}`)
 
     return { uids }
+  }
+
+  getProject = async (uid: string): Promise<ProjectItem> => {
+    const { data } = await this.client.query({
+      query: projectQuery,
+      variables: { uid },
+    })
+
+    const project: ProjectItem = data.project
+
+    return project
   }
 }
 

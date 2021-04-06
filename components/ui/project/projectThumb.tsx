@@ -6,6 +6,7 @@ import Link from 'next/link'
 interface ProjectProps {
   project: Project
 }
+
 const ProjectThumb = ({ project }: ProjectProps): JSX.Element => {
   // Add title and alt if photos do not have them
   if (!project.photos[0].responsiveImage.title) {

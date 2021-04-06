@@ -12,7 +12,8 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "clean": "rimraf .next"
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
@@ -42,6 +43,7 @@
     "identity-obj-proxy": "^3.0.0",
     "lint-staged": "^10.0.10",
     "prettier": "^2.0.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.3"
   }
 }

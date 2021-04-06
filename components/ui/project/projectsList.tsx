@@ -1,14 +1,18 @@
-import type { Project } from '@/lib/queries/home/types'
+import type { Photo } from '@/lib/shared/types/photo'
 
 import ProjectThumb from './projectThumb'
+import PhotoThumb from './photoThumb'
 import cloneDeep from 'lodash.clonedeep'
 import Masonry from 'react-masonry-css'
+import { Project } from '@/lib/queries/home/types'
 
 interface ProjectsProps {
-  projects: Project[]
+  photos?: Photo[]
+  projects?: Project[]
+  title?: string
 }
 
-const ProjectsList = ({ projects }: ProjectsProps): JSX.Element => {
+const ProjectsList = ({ photos, projects, title }: ProjectsProps): JSX.Element => {
   const breakpointColumnsObj = {
     default: 3,
     767: 2,
@@ -21,11 +25,16 @@ const ProjectsList = ({ projects }: ProjectsProps): JSX.Element => {
       className="home-projects-grid"
       columnClassName="home-project"
     >
-      {projects.map((readOnlyProject, index) => {
-        const project = cloneDeep(readOnlyProject)
-
-        return <ProjectThumb project={project} key={index} />
-      })}
+      {photos &&
+        photos.map((readOnlyProject, index) => {
+          const project = cloneDeep(readOnlyProject)
+          return <PhotoThumb title={title} photo={project} key={index} />
+        })}
+      {projects &&
+        projects.map((readOnlyProject, index) => {
+          const project = cloneDeep(readOnlyProject)
+          return <ProjectThumb project={project} key={index} />
+        })}
     </Masonry>
   )
 }
