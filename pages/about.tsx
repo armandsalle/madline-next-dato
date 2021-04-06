@@ -1,41 +1,26 @@
 import type { GetStaticProps } from 'next'
 import type { AboutProps } from '@/queries/about/types'
 
+import SideImage from '@/components/ui/sideImage'
+import Quote from '@/components/ui/quote'
+import Title from '@/components/ui/title'
+import Text from '@/components/ui/text'
 import { client } from '@/lib/client'
-import { Image } from 'react-datocms'
+import ThreeColLayout from '@/components/hoc/threeColLayout'
 
 function About({ aboutContent }: AboutProps): JSX.Element {
   return (
-    <div>
-      <h1>{aboutContent.title}</h1>
+    <>
+      <Title text={aboutContent.title} />
 
-      <Image
-        data={aboutContent.photo.responsiveImage}
-        explicitWidth={true}
-        lazyLoad={false}
-        style={{
-          width: 420,
-          border: 'none',
-          overflow: 'hidden',
-          display: 'block',
-        }}
-        pictureStyle={{
-          border: 'none',
-          width: 420,
-          overflow: 'hidden',
-        }}
-      />
+      <ThreeColLayout>
+        <SideImage image={aboutContent.photo.responsiveImage} />
+        <Text>{aboutContent.text1}</Text>
+        <Text>{aboutContent.text2}</Text>
+      </ThreeColLayout>
 
-      <div
-        dangerouslySetInnerHTML={{ __html: aboutContent.text }}
-        style={{
-          columnCount: 2,
-          columnGap: '10px',
-          width: '560px',
-        }}
-      ></div>
-      <div dangerouslySetInnerHTML={{ __html: aboutContent.description }}></div>
-    </div>
+      <Quote content={aboutContent.description} />
+    </>
   )
 }
 

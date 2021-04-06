@@ -1,10 +1,13 @@
+import cn from 'classnames'
+
 interface TitleProps {
   text: string
+  home?: boolean
 }
 
-const Title = ({ text }: TitleProps): JSX.Element => {
+const Title = ({ text, home }: TitleProps): JSX.Element => {
   return (
-    <div className="title">
+    <div className={cn('title', home && 'title--home')}>
       <h1 className="h1">{text}</h1>
     </div>
   )

@@ -12,7 +12,8 @@ export interface AboutData {
 
 export interface AboutContent {
   title: string
-  text: string
+  text1: string
+  text2: string
   description: string
   photo: Photo
   _seoMetaTags: SEOMetaTag[]
@@ -47,7 +48,7 @@ export interface ResponsiveImage {
   width: number
   height: number
   aspectRatio: number
-  alt: null
-  title: null
-  base64: string
+  alt: string
+  title: string
+  bgColor: string
 }

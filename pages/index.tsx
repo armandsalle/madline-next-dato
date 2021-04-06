@@ -9,7 +9,7 @@ import { client } from '@/lib/client'
 function Home({ homeContent }: HomeProps): JSX.Element {
   return (
     <>
-      <Title text={homeContent.title} />
+      <Title text={homeContent.title} home />
       <ProjectsList projects={homeContent.projects} />
       <Quote content={homeContent.description} />
     </>

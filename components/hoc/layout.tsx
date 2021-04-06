@@ -15,7 +15,7 @@ interface LayoutProps {
 
 const Layout = ({ children, layoutContent, siteContent, SEO }: LayoutProps): JSX.Element => {
   return (
-    <main className="container">
+    <div className="container">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -29,9 +29,9 @@ const Layout = ({ children, layoutContent, siteContent, SEO }: LayoutProps): JSX
       </Head>
 
       <Header logoUrl={layoutContent.siteLogo.url} />
-      <section className="site">{children}</section>
+      <main className="site">{children}</main>
       <Footer email={layoutContent.mail} phone={layoutContent.phone} />
-    </main>
+    </div>
   )
 }
 

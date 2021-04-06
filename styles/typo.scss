@@ -18,8 +18,19 @@ a {
 
 .title {
   margin-bottom: 17rem;
-  max-width: 51rem;
   width: 100%;
+
+  &--home {
+    max-width: 51rem;
+
+    @include media('<lanscape') {
+      max-width: 36rem;
+    }
+
+    @include media('<phone') {
+      max-width: 27rem;
+    }
+  }
 
   .h1 {
     font-size: 4.5rem;
@@ -42,12 +53,10 @@ a {
   }
 
   @include media('<lanscape') {
-    max-width: 36rem;
     margin-bottom: 9rem;
   }
 
   @include media('<phone') {
-    max-width: 27rem;
     margin-bottom: 6rem;
   }
 }

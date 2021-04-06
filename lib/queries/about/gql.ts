@@ -4,8 +4,9 @@ export const aboutQuery = gql`
   query AboutQuery {
     about {
       title
-      text(markdown: true)
-      description(markdown: true)
+      text1
+      text2
+      description
       photo {
         responsiveImage(imgixParams: { w: 840, auto: format, fit: fill }) {
           srcSet
