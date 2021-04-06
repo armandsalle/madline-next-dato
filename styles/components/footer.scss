@@ -1,4 +1,17 @@
 .footer {
+  margin-top: 28rem;
   padding-bottom: 4rem;
   font-size: clamp(1.5rem, 1.52vw, 2.2rem);
+
+  @include media('<desktop') {
+    margin-top: 25rem;
+  }
+
+  @include media('<tablet') {
+    margin-top: 15rem;
+  }
+
+  @include media('<phone') {
+    margin-top: 10rem;
+  }
 }

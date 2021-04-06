@@ -36,6 +36,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       layoutContent: layout,
       siteContent: site,
       project,
+      SEO: project._seoMetaTags,
     },
   }
 }

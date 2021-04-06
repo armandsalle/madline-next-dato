@@ -1,4 +1,5 @@
-import type { LayoutContent, SiteContent, SEOMetaTag } from '@/lib/queries/layout/types'
+import type { LayoutContent, SiteContent } from '@/lib/queries/layout/types'
+import type { SEOMetaTag } from '@/lib/shared/types/seo'
 import type { ReactNode } from 'react'
 
 import { renderMetaTags } from 'react-datocms'
@@ -18,10 +19,7 @@ const Layout = ({ children, layoutContent, siteContent, SEO }: LayoutProps): JSX
     <div className="container">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700" rel="stylesheet" />
         {!SEO &&
           layoutContent &&
           renderMetaTags((layoutContent._seoMetaTags as any[]).concat(siteContent.faviconMetaTags))}

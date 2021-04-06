@@ -9,6 +9,8 @@ import { layoutQuery } from './queries/layout/gql'
 import { aboutQuery } from './queries/about/gql'
 import { projectQuery, projectsSlugQuery } from './queries/projects/gql'
 import { ProjectItem } from './queries/projects/types'
+import { contactQuery } from './queries/contact/gql'
+import { ContactContent } from './queries/contact/types'
 
 export class Client {
   uri: string
@@ -77,6 +79,16 @@ export class Client {
     const project: ProjectItem = data.project
 
     return project
+  }
+
+  getContact = async (): Promise<ContactContent> => {
+    const { data } = await this.client.query({
+      query: contactQuery,
+    })
+
+    const contact: ContactContent = data.contact
+
+    return contact
   }
 }
 
