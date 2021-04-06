@@ -26,9 +26,9 @@ const Layout = ({ children, layoutContent, siteContent, SEO }: LayoutProps): JSX
         {SEO && renderMetaTags((SEO as any[]).concat(siteContent.faviconMetaTags))}
       </Head>
 
-      <Header logoUrl={layoutContent.siteLogo.url} />
+      {layoutContent && <Header logoUrl={layoutContent.siteLogo.url} />}
       <main className="site">{children}</main>
-      <Footer email={layoutContent.mail} phone={layoutContent.phone} />
+      {layoutContent && <Footer email={layoutContent.mail} phone={layoutContent.phone} />}
     </div>
   )
 }
