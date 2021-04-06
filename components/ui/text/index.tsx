@@ -3,7 +3,7 @@ interface TextProps {
 }
 
 const Text = ({ children }: TextProps): JSX.Element => {
-  return <p className="text">{children}</p>
+  return <div className="text" dangerouslySetInnerHTML={{ __html: children }} />
 }
 
 export default Text

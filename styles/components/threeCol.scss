@@ -1,7 +1,7 @@
 .three-col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: clamp(2rem, 2.77vw, 4rem);
+  grid-gap: clamp(2rem, 2vw, 3rem);
 
   @include media('<tablet') {
     grid-template-columns: repeat(1, 1fr);
