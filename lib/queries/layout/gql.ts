@@ -6,7 +6,6 @@ export const layoutFragment = gql`
     mail
     facebook
     phone
-    pinterest
     siteTitle
     siteLogo {
       url

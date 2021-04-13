@@ -22,7 +22,6 @@ export interface LayoutContent {
   mail: string
   facebook: string
   phone: string
-  pinterest: string
   siteTitle: string
   siteLogo: Favicon
   _seoMetaTags: SEOMetaTag[]
